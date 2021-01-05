@@ -538,11 +538,15 @@ def load_feature_mat(path, ID):
 
 def load_feature_mat_patch_shading(path):
 
-    color_path = join(path +"_color.exr")
-    normal_path = join(path + "_normal.exr")
-    depth_path = join(path + "_depth.exr")
-    texture_path = join(path + "_albedo.exr")
+    # color_path = join(path +"_color.exr")
+    # normal_path = join(path + "_normal.exr")
+    # depth_path = join(path + "_depth.exr")
+    # texture_path = join(path + "_albedo.exr")
     
+    color_path = join(path, "color.exr")
+    normal_path = join(path, "normal.exr")
+    depth_path = join(path, "depth.exr")
+    texture_path = join(path, "texture.exr")
 
     res_tuple = ()
     

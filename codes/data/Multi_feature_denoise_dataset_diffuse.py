@@ -20,6 +20,7 @@ class FeatureDenoiseDataset(data.Dataset):
 
         for scece_name in SCENE_NAME_LIST:
             scene_dir = os.path.join(opt['dataroot_GT'], scece_name)
+            print(scene_dir)
             distinct_prefix = util_disney.get_distinct_prefix(scene_dir)
             self.paths_GT.extend([os.path.join(opt["dataroot_GT"], scece_name, prefix+"-32768spp.exr") for prefix in distinct_prefix if os.path.exists(os.path.join(opt["dataroot_GT"], scece_name, prefix+"-32768spp_diffuse.exr"))])
             self.paths_NOISY.extend([os.path.join(opt["dataroot_NOISY"], scece_name, prefix+"-00032spp.exr") for prefix in distinct_prefix if os.path.exists(os.path.join(opt["dataroot_GT"], scece_name, prefix+"-32768spp_diffuse.exr"))])

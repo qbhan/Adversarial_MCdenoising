@@ -18,14 +18,17 @@ class FeatureDenoiseDataset(data.Dataset):
         self.paths_GT = []
 
         self.FEATURE_DIR = os.path.join(opt['dataroot_NOISY'])
+        # print(self.FEATURE_DIR)
         self.REF_DIR = os.path.join(opt['dataroot_GT'])
-        print(self.REF_DIR)
+        # print(self.REF_DIR)
         SCENE_NAME_LIST = util.get_dirs_in_dir(self.FEATURE_DIR)
         
         for scece_name in SCENE_NAME_LIST:
             for i in range(35):
-                self.paths_NOISY.append(os.path.join(opt["dataroot_NOISY"], scece_name, scece_name+"-"+str(i)))
-                self.paths_GT.append(os.path.join(opt["dataroot_GT"], scece_name +"-"+str(i)+".exr"))
+                # self.paths_NOISY.append(os.path.join(opt["dataroot_NOISY"], scece_name, scece_name+"-"+str(i)))
+                self.paths_NOISY.append(os.path.join(opt["dataroot_NOISY"], scece_name))
+                # self.paths_GT.append(os.path.join(opt["dataroot_GT"], scece_name +"-"+str(i)+".exr"))
+                self.paths_GT.append(os.path.join(opt["dataroot_GT"], scece_name + "xr.exr"))
         self.paths_GT = sorted(self.paths_GT)    
         self.paths_NOISY = sorted(self.paths_NOISY)
         scene_num = len(self.paths_NOISY )
@@ -54,7 +57,10 @@ class FeatureDenoiseDataset(data.Dataset):
         NOISY_path = self.paths_NOISY[index]
         # img_GT = util.read_img(self.GT_env, GT_path)
         # for HDRs
-        img_GT = util.load_reference_mat_shading("", GT_path, NOISY_path)
+        # No load_reference_mat_shading() in data.util
+        # Change to load_reference_mat for while
+        # img_GT = util.load_reference_mat_shading("", GT_path, NOISY_path)
+        img_GT = util.load_reference_mat("", GT_path)
 
 
         # get NOISY image

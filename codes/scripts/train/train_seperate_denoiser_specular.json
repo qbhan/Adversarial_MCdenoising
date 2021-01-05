@@ -10,8 +10,8 @@
      "train": {
       "name": "train_Disney_feature_denoise"
       , "mode": "Disney_feature_denoise_specular"
-      , "dataroot_GT": "../data/new_ref_whole"
-      , "dataroot_NOISY": "../data/new_feature_whole"
+      , "dataroot_GT": "../data/kjl/KJL_reference/KJL_reference"
+      , "dataroot_NOISY": "../data/kjl/KJL_features/KJL_features"
       , "subset_file": null
       , "use_shuffle": true
       , "n_workers": 8
@@ -23,8 +23,8 @@
     , "val": {
       "name": "val_Disney_feature_Denoise"
       , "mode": "Disney_feature_denoise_specular"
-      , "dataroot_GT": "../data/new_ref_whole"
-      , "dataroot_NOISY": "../data/new_feature_whole"
+      , "dataroot_GT": "../data/kjl/KJL_reference/KJL_reference"
+      , "dataroot_NOISY": "../data/kjl/KJL_features/KJL_features"
       // , "GT_size": 256
     
     }

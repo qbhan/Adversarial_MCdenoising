@@ -85,6 +85,14 @@ class FeatureDenoiseDataset(data.Dataset):
         img_GT = torch.from_numpy(np.ascontiguousarray(np.transpose(img_GT, (2, 0, 1)))).float()
         img_NOISY = torch.from_numpy(np.ascontiguousarray(np.transpose(img_NOISY, (2, 0, 1)))).float()
         features = torch.from_numpy(np.ascontiguousarray(np.transpose(features, (2, 0, 1)))).float()
+        
+        img_shape = img_GT.shape[1:]
+        if (img_shape[0] < img_shape[1]):
+            img_GT = torch.transpose(img_GT, 1, 2)
+            img_NOISY = torch.transpose(img_NOISY, 1, 2)
+            features = torch.transpose(features, 1, 2)
+        # print("SIZE img_GT : {}, img_NOISY : {}, features : {}".format(img_GT.shape, img_NOISY.shape, features.shape))
+
 
         return {'NOISY': img_NOISY, 'GT': img_GT, "seg":features, "category": 1, 'NOISY_path': NOISY_path, 'GT_path': GT_path}
 
